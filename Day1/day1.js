@@ -14,7 +14,20 @@ function getMaxCalories(data) {
       calorieCount = 0;
     }
   });
-  return Math.max.apply(Math, caloriesCount);
+  return getTop3(caloriesCount);
+}
+
+function getTop3(data) {
+  let res = 0;
+  data.sort((a, b) => b - a);
+
+  const newData = data.splice(0, 3);
+  console.log(newData);
+  newData.forEach((number) => {
+    res += number;
+  });
+
+  return res;
 }
 
 console.log("Nombre de calorie max : ", getMaxCalories(data));
