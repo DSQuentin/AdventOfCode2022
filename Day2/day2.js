@@ -66,4 +66,51 @@ function getTotalScore(data) {
   return totalScore;
 }
 
-console.log("Score total : ", getTotalScore(data));
+// X = lose, Y = draw, Z = win
+function getTotalScore2(data) {
+  let totalScore = 0;
+  data.forEach((round) => {
+    let formattedRound = round.split(" ");
+    let adversaire = formattedRound[0];
+    let joueur = formattedRound[1];
+
+    // Je dois lose
+    if (joueur === "X") {
+      if (adversaire === "A") {
+        totalScore += 3;
+      } else if (adversaire === "B") {
+        totalScore += 1;
+      } else {
+        totalScore += 2;
+      }
+    }
+
+    // Je dois faire draw
+    if (joueur === "Y") {
+      totalScore += 3;
+      if (adversaire === "A") {
+        totalScore += 1;
+      } else if (adversaire === "B") {
+        totalScore += 2;
+      } else {
+        totalScore += 3;
+      }
+    }
+
+    // Je dois win
+    if (joueur === "Z") {
+      totalScore += 6;
+      if (adversaire === "A") {
+        totalScore += 2;
+      } else if (adversaire === "B") {
+        totalScore += 3;
+      } else {
+        totalScore += 1;
+      }
+    }
+  });
+
+  return totalScore;
+}
+
+console.log("Score total : ", getTotalScore2(data));
