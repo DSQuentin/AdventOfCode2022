@@ -14,6 +14,8 @@ function getMaxCalories(data) {
       calorieCount = 0;
     }
   });
+
+  
   return getTop3(caloriesCount);
 }
 
